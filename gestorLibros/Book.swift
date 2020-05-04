@@ -19,10 +19,11 @@ class Book: NSObject, NSCoding {
     var puntuacion: Int
     var autor: String
     var genero: String
+    var favorito: Bool
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("meals")
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("books")
     
     //MARK: Types
     
@@ -32,11 +33,12 @@ class Book: NSObject, NSCoding {
         static let puntuacion = "puntuacion"
         static let autor = "autor"
         static let genero = "genero"
+        static let favorito = "favorito"
     }
     
     //MARK: Initialization
     
-    init?(nombre: String, portada: UIImage?, puntuacion: Int, autor: String, genero: String) {
+    init?(nombre: String, portada: UIImage?, puntuacion: Int, autor: String, genero: String, favorito: Bool) {
         
         // The name must not be empty
         guard !nombre.isEmpty else {
@@ -61,12 +63,14 @@ class Book: NSObject, NSCoding {
             return nil
         }
         
+        
         // Initialize stored properties.
         self.nombre = nombre
         self.portada = portada
         self.puntuacion = puntuacion
         self.autor = autor
         self.genero = genero
+        self.favorito = favorito
     }
     
     //MARK: NSCoding
@@ -77,7 +81,7 @@ class Book: NSObject, NSCoding {
         aCoder.encode(puntuacion, forKey: PropertyKey.puntuacion)
         aCoder.encode(autor, forKey: PropertyKey.autor)
         aCoder.encode(genero, forKey: PropertyKey.genero)
-        
+        aCoder.encode(favorito, forKey: PropertyKey.favorito)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -103,8 +107,10 @@ class Book: NSObject, NSCoding {
             return nil
         }
         
+        let favorito = aDecoder.decodeBool(forKey: PropertyKey.favorito)
+        
         // Must call designated initializer.
-        self.init(nombre: nombre, portada: portada, puntuacion: puntuacion, autor: autor, genero: genero)
+        self.init(nombre: nombre, portada: portada, puntuacion: puntuacion, autor: autor, genero: genero, favorito: favorito)
         
     }
 }

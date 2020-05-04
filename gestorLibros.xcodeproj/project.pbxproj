@@ -361,7 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/gestorLibros/Info.plist";
+				INFOPLIST_FILE = gestorLibros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gestorLibros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,7 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/gestorLibros/Info.plist";
+				INFOPLIST_FILE = gestorLibros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gestorLibros;
 				PRODUCT_NAME = "$(TARGET_NAME)";

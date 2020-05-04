@@ -18,6 +18,7 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var autorTextField: UITextField!
     @IBOutlet weak var generoTextField: UITextField!
+    @IBOutlet weak var favSwitch: UISwitch!
     
     /*
          This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
@@ -39,9 +40,10 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             ratingControl.rating = book.puntuacion
             autorTextField.text = book.autor
             generoTextField.text = book.genero
+            favSwitch.setOn(book.favorito, animated: true)
         }
         
-        // Enable the Save button only if the text field has a valid Meal name.
+        // Enable the Save button only if the text field has a valid Book name.
         updateSaveButtonState()
     }
     
@@ -119,9 +121,10 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let rating = ratingControl.rating
         let autor = autorTextField.text ?? ""
         let genero = generoTextField.text ?? ""
+        let favorito = favSwitch.isOn
         
-        // Set the meal to be passed to MealTableViewController after the unwind segue.
-        book = Book(nombre: name, portada: photo, puntuacion: rating, autor: autor, genero: genero)
+        // Set the book to be passed to BookTableViewController after the unwind segue.
+        book = Book(nombre: name, portada: photo, puntuacion: rating, autor: autor, genero: genero, favorito: favorito)
     }
     
     //MARK: Actions

@@ -21,7 +21,7 @@ class BookTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // Load any saved meals, otherwise load sample data.
+        // Load any saved books, otherwise load sample data.
         if let savedBooks = loadBooks() {
             books += savedBooks
         }
@@ -170,15 +170,15 @@ class BookTableViewController: UITableViewController {
         let photo2 = UIImage(named: "book2")
         let photo3 = UIImage(named: "book3")
 
-        guard let book1 = Book(nombre: "Los Juegos del Hambre", portada: photo1, puntuacion: 4, autor: "Suzanne Collins", genero: "Literatura Juvenil") else {
+        guard let book1 = Book(nombre: "Los Juegos del Hambre", portada: photo1, puntuacion: 4, autor: "Suzanne Collins", genero: "Literatura Juvenil", favorito: true) else {
             fatalError("Unable to instantiate book1")
         }
 
-        guard let book2 = Book(nombre: "Invisible", portada: photo2, puntuacion: 5, autor: "Eloy Moreno", genero: "Literatura Juvenil") else {
+        guard let book2 = Book(nombre: "Invisible", portada: photo2, puntuacion: 5, autor: "Eloy Moreno", genero: "Literatura Juvenil", favorito: true) else {
             fatalError("Unable to instantiate book2")
         }
 
-        guard let book3 = Book(nombre: "Tierra", portada: photo3, puntuacion: 3, autor: "Eloy Moreno", genero: "Ficcion") else {
+        guard let book3 = Book(nombre: "Tierra", portada: photo3, puntuacion: 3, autor: "Eloy Moreno", genero: "Ficcion", favorito: false) else {
             fatalError("Unable to instantiate book3")
         }
 
