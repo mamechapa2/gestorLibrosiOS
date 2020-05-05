@@ -8,8 +8,9 @@
 
 import UIKit
 import os.log
+import UserNotifications
 
-class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UNUserNotificationCenterDelegate {
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,10 +26,10 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
          or constructed as part of adding a new meal.
      */
     var book: Book?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         

@@ -8,16 +8,56 @@
 
 import UIKit
 import os.log
+import UserNotifications
 
-class BookTableViewController: UITableViewController {
+var books = [Book]()
+class BookTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
     //MARK: Properties
     
-    var books = [Book]()
-
+    
+    let userNotificationCenter = UNUserNotificationCenter.current()
+    
+    func requestNotificationAuthorization()
+    {
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print("Error: ", error)
+            }
+        }
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    func enviarNotificacion(titulo: String, mensaje: String)
+    {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = titulo
+        notificationContent.body = mensaje
+        notificationContent.badge = NSNumber(value: 3)
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
+                                                        repeats: false)
+        let request = UNNotificationRequest(identifier: "alerta",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //pedir permiso alertas
+        self.userNotificationCenter.delegate = self
+        self.requestNotificationAuthorization()
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -148,6 +188,7 @@ class BookTableViewController: UITableViewController {
                 // Update an existing book.
                 books[selectedIndexPath.row] = book
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                self.enviarNotificacion(titulo: "Libro editado", mensaje: "Se ha editado "+book.nombre)
             }
             else {
                 // Add a new book.
@@ -155,6 +196,7 @@ class BookTableViewController: UITableViewController {
                 
                 books.append(book)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                self.enviarNotificacion(titulo: "Libro creado", mensaje: "Se ha creado " + book.nombre)
             }
             
             // Save the books.
