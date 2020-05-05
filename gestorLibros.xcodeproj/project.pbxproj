@@ -91,12 +91,12 @@
 				939722381DD4ED9800ACC1D0 /* Book.swift */,
 				93B36E621DDB8D3A00334F4A /* BookTableViewCell.swift */,
 				93B36E641DDBE63500334F4A /* BookTableViewController.swift */,
+				2BA24EAB2461722B00E99B96 /* FavBookTableViewCell.swift */,
+				2BA24EAD2461751C00E99B96 /* FavBookTableViewController.swift */,
 				936B4B851DB54E8F0090E3EE /* Main.storyboard */,
 				936B4B881DB54E8F0090E3EE /* Assets.xcassets */,
 				936B4B8A1DB54E8F0090E3EE /* LaunchScreen.storyboard */,
 				936B4B8D1DB54E8F0090E3EE /* Info.plist */,
-				2BA24EAB2461722B00E99B96 /* FavBookTableViewCell.swift */,
-				2BA24EAD2461751C00E99B96 /* FavBookTableViewController.swift */,
 			);
 			path = gestorLibros;
 			sourceTree = "<group>";
