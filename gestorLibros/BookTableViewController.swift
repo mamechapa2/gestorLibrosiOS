@@ -123,6 +123,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             books.remove(at: indexPath.row)
             saveBooks()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.enviarNotificacion(titulo: "Se ha borrado el libro", mensaje: "")
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -163,7 +164,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             }
             
             guard let selectedBookCell = sender as? BookTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(sender ?? "")")
             }
             
             guard let indexPath = tableView.indexPath(for: selectedBookCell) else {
@@ -174,7 +175,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             bookDetailViewController.book = selectedBook
             
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "")")
         }
     }
 
