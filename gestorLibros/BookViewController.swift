@@ -1,10 +1,3 @@
-//
-//  MealViewController.swift
-//  FoodTracker
-//
-//  Created by Jane Appleseed on 10/17/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
 
 import UIKit
 import os.log
@@ -12,7 +5,7 @@ import UserNotifications
 
 class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UNUserNotificationCenterDelegate {
     
-    //MARK: Properties
+    //MARK: Variables
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
@@ -20,20 +13,14 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var autorTextField: UITextField!
     @IBOutlet weak var generoTextField: UITextField!
     @IBOutlet weak var favSwitch: UISwitch!
-    
-    /*
-         This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
-         or constructed as part of adding a new meal.
-     */
-    var book: Book?
 
+    var book: Book?
+//Método que se carga cuando se inicia la vista
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         
-        // Set up views if editing an existing Meal.
         if let book = book {
             navigationItem.title = book.nombre
             nameTextField.text = book.nombre
@@ -44,61 +31,58 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             favSwitch.setOn(book.favorito, animated: true)
         }
         
-        // Enable the Save button only if the text field has a valid Book name.
+        // Activar el botón de guardado si tiene un nombre
         updateSaveButtonState()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     //MARK: UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
+        // Deshabilitar el teclado
         saveButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
+        // Esconder el teclado
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        //Cuando tenga un nombre, habilitar guardado
         updateSaveButtonState()
         navigationItem.title = textField.text
     }
     
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        // Dismiss the picker if the user canceled.
+        // Quitar el controlador de la imagen si se cancela
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
 let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        
-        // The info dictionary may contain multiple representations of the image. You want to use the original.
+   
+        // Seleccionar la imagen original
         guard let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        // Set photoImageView to display the selected image.
+        // Configurar el ImageView para que muestre la portada
         photoImageView.image = selectedImage
         
-        // Dismiss the picker.
+        // Liberar recursos
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Navigation
+    //MARK: Navegación
     
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+    
+    
+    @IBAction func cancelar(_ sender: UIBarButtonItem) {
+        //Método para cancelar
         let isPresentingInAddBookMode = presentingViewController is UINavigationController
-        
+        //Si es para agregar simplemente quita la vista
         if isPresentingInAddBookMode {
             dismiss(animated: true, completion: nil)
         }
@@ -109,18 +93,17 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             fatalError("The BookViewController is not inside a navigation controller.")
         }
     }
-    
-    // This method lets you configure a view controller before it's presented.
+    // Este método configura un libro para enviarlo a una vista
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
         
-        // Configure the destination view controller only when the save button is pressed.
+        // Configurar el destinatario
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
+        //Construir libro
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
@@ -128,31 +111,31 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let genero = generoTextField.text ?? ""
         let favorito = favSwitch.isOn
         
-        // Set the book to be passed to BookTableViewController after the unwind segue.
+        // Construir el libro para enviarlo
         book = Book(nombre: name, portada: photo, puntuacion: rating, autor: autor, genero: genero, favorito: favorito)
     }
     
-    //MARK: Actions
+    //MARK: Acciones
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         
-        // Hide the keyboard.
+        // Esconder el teclado al principio
         nameTextField.resignFirstResponder()
         
-        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        // Controlador para escoger una imagen
         let imagePickerController = UIImagePickerController()
         
-        // Only allow photos to be picked, not taken.
+        // Configurar solo para que elija fotos
         imagePickerController.sourceType = .photoLibrary
         
-        // Make sure ViewController is notified when the user picks an image.
+        // Asegurarse de que se le notifica al controlador
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    //MARK: Private Methods
+    //MARK: Métodos privados
     
     private func updateSaveButtonState() {
-        // Disable the Save button if the text field is empty.
+        // Deshabilitar el botón de guardado
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
@@ -160,12 +143,11 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 }
 
 
-// Helper function inserted by Swift 4.2 migrator.
+// Funciones de ayuda insertadas con Swift 4.2
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }
 
-// Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
 }

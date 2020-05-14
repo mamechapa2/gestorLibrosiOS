@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2BA24EAC2461722B00E99B96 /* FavBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24EAB2461722B00E99B96 /* FavBookTableViewCell.swift */; };
 		2BA24EAE2461751C00E99B96 /* FavBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24EAD2461751C00E99B96 /* FavBookTableViewController.swift */; };
-		2BF0A87324696971006E5FD6 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0A87224696971006E5FD6 /* ConfigViewController.swift */; };
 		936B4B821DB54E8F0090E3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936B4B811DB54E8F0090E3EE /* AppDelegate.swift */; };
 		936B4B841DB54E8F0090E3EE /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936B4B831DB54E8F0090E3EE /* BookViewController.swift */; };
 		936B4B871DB54E8F0090E3EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 936B4B851DB54E8F0090E3EE /* Main.storyboard */; };
@@ -34,7 +33,6 @@
 /* Begin PBXFileReference section */
 		2BA24EAB2461722B00E99B96 /* FavBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavBookTableViewCell.swift; sourceTree = "<group>"; };
 		2BA24EAD2461751C00E99B96 /* FavBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavBookTableViewController.swift; sourceTree = "<group>"; };
-		2BF0A87224696971006E5FD6 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		936B4B7E1DB54E8F0090E3EE /* gestorLibros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gestorLibros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		936B4B811DB54E8F0090E3EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		936B4B831DB54E8F0090E3EE /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				2BA24EAB2461722B00E99B96 /* FavBookTableViewCell.swift */,
 				2BA24EAD2461751C00E99B96 /* FavBookTableViewController.swift */,
 				936B4B851DB54E8F0090E3EE /* Main.storyboard */,
-				2BF0A87224696971006E5FD6 /* ConfigViewController.swift */,
 				936B4B881DB54E8F0090E3EE /* Assets.xcassets */,
 				936B4B8A1DB54E8F0090E3EE /* LaunchScreen.storyboard */,
 				936B4B8D1DB54E8F0090E3EE /* Info.plist */,
@@ -217,7 +214,6 @@
 				93B36E651DDBE63500334F4A /* BookTableViewController.swift in Sources */,
 				93B36E631DDB8D3A00334F4A /* BookTableViewCell.swift in Sources */,
 				2BA24EAC2461722B00E99B96 /* FavBookTableViewCell.swift in Sources */,
-				2BF0A87324696971006E5FD6 /* ConfigViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +375,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -393,7 +388,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

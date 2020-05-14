@@ -92,7 +92,6 @@ class Book: NSObject, NSCoding {
             return nil
         }
         
-        // Because photo is an optional property of Meal, just use conditional cast.
         let portada = aDecoder.decodeObject(forKey: PropertyKey.portada) as? UIImage
         
         let puntuacion = aDecoder.decodeInteger(forKey: PropertyKey.puntuacion)

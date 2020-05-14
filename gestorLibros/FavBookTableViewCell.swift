@@ -15,13 +15,13 @@ class FavBookTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingControlFav: RatingControl!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Inicializar vista
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        //Método para configurar, no hay que cambiar nada
     }
 
 }

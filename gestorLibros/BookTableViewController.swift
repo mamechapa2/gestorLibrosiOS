@@ -1,11 +1,3 @@
-//
-//  MealTableViewController.swift
-//  FoodTracker
-//
-//  Created by Jane Appleseed on 11/15/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
-
 import UIKit
 import os.log
 import UserNotifications
@@ -13,13 +5,14 @@ import UserNotifications
 var books = [Book]()
 class BookTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
-    //MARK: Properties
+    //MARK: Propiedades y constructores
     
-    
+    //Variable que controla las notificaciones
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     func requestNotificationAuthorization()
     {
+        //Pedir permiso del usuario
         let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
         self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
             if let error = error {
@@ -27,6 +20,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             }
         }
     }
+    //Constructores para las notificaciones
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
     }
@@ -40,13 +34,13 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
         notificationContent.title = titulo
         notificationContent.body = mensaje
         notificationContent.badge = NSNumber(value: 3)
-        
+        // Trigger para determinar el tiempo máximo
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
                                                         repeats: false)
         let request = UNNotificationRequest(identifier: "alerta",
                                             content: notificationContent,
                                             trigger: trigger)
-        
+        //Pedimos la solicitud
         userNotificationCenter.add(request) { (error) in
             if let error = error {
                 print("Notification Error: ", error)
@@ -61,27 +55,22 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // Load any saved books, otherwise load sample data.
+        // cargar libros, si no, los de prueba
         if let savedBooks = loadBooks() {
             books += savedBooks
         }
         else {
-            // Load the sample data.
+            // Carga los datos de prueba
             loadSampleBooks()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Libera recursos
     }
 
-    //MARK: - Table view data source
+    //MARK: - Métodos de la tabla
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -94,72 +83,54 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Table view cells are reused and should be dequeued using a cell identifier.
+        // Las celdas tienen un identificador
         let cellIdentifier = "BookTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? BookTableViewCell  else {
             fatalError("The dequeued cell is not an instance of BookTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
+        // Busca el libro
         let book = books[indexPath.row]
         
         cell.nameLabel.text = book.nombre
         cell.photoImageView.image = book.portada
         cell.ratingControl.rating = book.puntuacion
-        
+        // Devuelve la celda
         return cell
     }
     
 
     
-    // Override to support conditional editing of the table view.
+    // Para determinar si se edita
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        // Devolver falso si no es editable
         return true
     }
     
 
     
-    // Override to support editing the table view.
+    // Método para editar celdas
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // Borrar el libro de la base de datos
             books.remove(at: indexPath.row)
             saveBooks()
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.enviarNotificacion(titulo: "Se ha borrado el libro", mensaje: "")
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // Crea una instancia nueva de libro y lo inserta
         }    
     }
-    
+    //MARK: - Navegación
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    //MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Preparación
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
         
         switch(segue.identifier ?? "") {
-            
+            //Agregar un libro nuevo
         case "AddItem":
             os_log("Adding a new book.", log: OSLog.default, type: .debug)
             
@@ -178,26 +149,26 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             
             let selectedBook = books[indexPath.row]
             bookDetailViewController.book = selectedBook
-            
+            //Iniciar nueva vista con el libro seleccionado
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "")")
         }
     }
 
     
-    //MARK: Actions
+    //MARK: Acciones
     
     @IBAction func unwindToBookList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? BookViewController, let book = sourceViewController.book {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing book.
+                // Editar un libro
                 books[selectedIndexPath.row] = book
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 self.enviarNotificacion(titulo: "Libro editado", mensaje: "Se ha editado "+book.nombre)
             }
             else {
-                // Add a new book.
+                // Agregar un libro
                 let newIndexPath = IndexPath(row: books.count, section: 0)
                 
                 books.append(book)
@@ -205,15 +176,15 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
                 self.enviarNotificacion(titulo: "Libro creado", mensaje: "Se ha creado " + book.nombre)
             }
             
-            // Save the books.
+            // Guardar los libros
             saveBooks()
         }
     }
     
-    //MARK: Private Methods
+    //MARK: Métodos privados
     
     private func loadSampleBooks() {
-        
+        //Construcción de los libros de prueba
         let photo1 = UIImage(named: "book1")
         let photo2 = UIImage(named: "book2")
         let photo3 = UIImage(named: "book3")
@@ -229,11 +200,12 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
         guard let book3 = Book(nombre: "Tierra", portada: photo3, puntuacion: 3, autor: "Eloy Moreno", genero: "Ficcion", favorito: false) else {
             fatalError("Unable to instantiate book3")
         }
-
+        //Los agregamos a la vista principal y a la base de datos
         books += [book1, book2, book3]
     }
     
     private func saveBooks() {
+        //Llamamos a NSCoder para guardar los libros
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(books, toFile: Book.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("Books successfully saved.", log: OSLog.default, type: .debug)
@@ -243,6 +215,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
     }
     
     private func loadBooks() -> [Book]?  {
+        //Cargamos los libros
         return NSKeyedUnarchiver.unarchiveObject(withFile: Book.ArchiveURL.path) as? [Book]
     }
 
