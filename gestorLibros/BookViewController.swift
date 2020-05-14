@@ -48,6 +48,10 @@ class BookViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         updateSaveButtonState()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     //MARK: UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -91,9 +95,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     //MARK: Navigation
     
-    
-    
-    @IBAction func cancelar(_ sender: UIBarButtonItem) {
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
         let isPresentingInAddBookMode = presentingViewController is UINavigationController
         
@@ -107,6 +109,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             fatalError("The BookViewController is not inside a navigation controller.")
         }
     }
+    
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

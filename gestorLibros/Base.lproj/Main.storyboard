@@ -65,18 +65,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHp-yK-be7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="136"/>
+            <point key="canvasLocation" x="232.80000000000001" y="136.28185907046478"/>
         </scene>
         <!--Nuevo libro-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <tapGestureRecognizer id="6zR-HY-Zef">
-                    <connections>
-                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="OAW-KQ-TMo"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <exit id="pAa-iy-mNE" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="BookViewController" customModule="gestorLibros" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -86,88 +79,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vni-hZ-NR9">
-                                <rect key="frame" x="8" y="50" width="359" height="523"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2cd-wZ-Gpp">
+                                <rect key="frame" x="27" y="72" width="320" height="486"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del libro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cqs-Vk-0lJ">
-                                        <rect key="frame" x="20" y="20" width="163" height="30"/>
+                                        <rect key="frame" x="96" y="0.0" width="128.5" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Autor del libro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vLD-fm-t1X">
-                                        <rect key="frame" x="20" y="58" width="163" height="30"/>
+                                        <rect key="frame" x="104" y="38" width="112" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="vht-w5-DXs">
-                                        <rect key="frame" x="20" y="134" width="320" height="320"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genero" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vza-BF-JAj">
+                                        <rect key="frame" x="104" y="76" width="112" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vza-BF-JAj" secondAttribute="height" multiplier="56:15" id="Zkn-0o-Dut"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="vht-w5-DXs">
+                                        <rect key="frame" x="0.0" y="114" width="320" height="320"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vht-w5-DXs" secondAttribute="height" multiplier="1:1" id="4SE-JV-oQw"/>
+                                            <constraint firstAttribute="width" secondItem="vht-w5-DXs" secondAttribute="height" multiplier="1:1" id="ifS-hR-yOP"/>
+                                        </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="6zR-HY-Zef" appends="YES" id="wPc-Ej-Bht"/>
                                         </connections>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t56-bQ-7Yp" customClass="RatingControl" customModule="gestorLibros" customModuleProvider="target">
-                                        <rect key="frame" x="53.5" y="468" width="252" height="44"/>
+                                        <rect key="frame" x="34" y="442" width="252" height="44"/>
                                     </stackView>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D40-SH-6c6">
-                                        <rect key="frame" x="250" y="65" width="50" height="31"/>
-                                    </switch>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genero" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vza-BF-JAj">
-                                        <rect key="frame" x="20" y="96" width="163" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="¿Favorito?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ9-lz-zJc">
-                                        <rect key="frame" x="234" y="36" width="78" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="78" id="pDY-0b-LL0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="vLD-fm-t1X" firstAttribute="top" secondItem="Cqs-Vk-0lJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3wC-xI-dLx"/>
-                                    <constraint firstItem="NJ9-lz-zJc" firstAttribute="leading" secondItem="Cqs-Vk-0lJ" secondAttribute="trailing" constant="52" id="450-rz-tCj"/>
-                                    <constraint firstItem="vza-BF-JAj" firstAttribute="top" secondItem="vLD-fm-t1X" secondAttribute="bottom" constant="8" symbolic="YES" id="77Y-6u-JSw"/>
-                                    <constraint firstItem="vht-w5-DXs" firstAttribute="centerX" secondItem="vni-hZ-NR9" secondAttribute="centerX" id="9Ua-cp-hsr"/>
-                                    <constraint firstItem="vht-w5-DXs" firstAttribute="top" secondItem="D40-SH-6c6" secondAttribute="bottom" constant="38" id="KJa-2E-OPY"/>
-                                    <constraint firstItem="D40-SH-6c6" firstAttribute="leading" secondItem="vLD-fm-t1X" secondAttribute="trailing" constant="67" id="OVv-24-PV0"/>
-                                    <constraint firstItem="NJ9-lz-zJc" firstAttribute="centerX" secondItem="D40-SH-6c6" secondAttribute="centerX" id="Px0-6h-od4"/>
-                                    <constraint firstAttribute="bottom" secondItem="t56-bQ-7Yp" secondAttribute="bottom" constant="19" id="Q1a-1S-hgU"/>
-                                    <constraint firstItem="vLD-fm-t1X" firstAttribute="trailing" secondItem="vza-BF-JAj" secondAttribute="trailing" id="QH7-VJ-gT3"/>
-                                    <constraint firstItem="Cqs-Vk-0lJ" firstAttribute="leading" secondItem="vni-hZ-NR9" secondAttribute="leading" constant="20" id="QyN-h0-SSW"/>
-                                    <constraint firstItem="vht-w5-DXs" firstAttribute="top" secondItem="vza-BF-JAj" secondAttribute="bottom" constant="8" symbolic="YES" id="SIX-SE-05H"/>
-                                    <constraint firstAttribute="trailing" secondItem="D40-SH-6c6" secondAttribute="trailing" constant="61" id="Upp-L2-1Hk"/>
-                                    <constraint firstItem="D40-SH-6c6" firstAttribute="top" secondItem="vni-hZ-NR9" secondAttribute="top" constant="65" id="bsU-Om-ePo"/>
-                                    <constraint firstItem="t56-bQ-7Yp" firstAttribute="top" secondItem="vht-w5-DXs" secondAttribute="bottom" constant="8" symbolic="YES" id="fAC-PA-x7L"/>
-                                    <constraint firstItem="vLD-fm-t1X" firstAttribute="leading" secondItem="vza-BF-JAj" secondAttribute="leading" id="hNh-Ne-GFt"/>
-                                    <constraint firstItem="Cqs-Vk-0lJ" firstAttribute="leading" secondItem="vLD-fm-t1X" secondAttribute="leading" id="jyI-MN-isE"/>
-                                    <constraint firstItem="Cqs-Vk-0lJ" firstAttribute="trailing" secondItem="vLD-fm-t1X" secondAttribute="trailing" id="nSy-VF-V1t"/>
-                                    <constraint firstItem="D40-SH-6c6" firstAttribute="top" secondItem="NJ9-lz-zJc" secondAttribute="bottom" constant="8" symbolic="YES" id="py4-j7-St0"/>
-                                    <constraint firstItem="vht-w5-DXs" firstAttribute="centerX" secondItem="t56-bQ-7Yp" secondAttribute="centerX" id="sT8-ip-C0e"/>
-                                    <constraint firstItem="vza-BF-JAj" firstAttribute="leading" secondItem="vht-w5-DXs" secondAttribute="leading" id="tFn-Uj-w7D"/>
-                                </constraints>
-                            </view>
+                            </stackView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D40-SH-6c6">
+                                <rect key="frame" x="163" y="599" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="vni-hZ-NR9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="8lh-31-ege"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vni-hZ-NR9" secondAttribute="bottom" constant="9" id="Ghn-CB-caY"/>
-                            <constraint firstItem="vni-hZ-NR9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="QiF-EZ-6Kj"/>
-                            <constraint firstItem="vni-hZ-NR9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f96-cp-TxX"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nuevo libro" id="lPO-Rb-aqa">
                         <barButtonItem key="leftBarButtonItem" title="Cancelar" id="vGh-iY-UPb">
                             <connections>
-                                <action selector="cancelar:" destination="BYZ-38-t0r" id="Ey9-2q-NhD"/>
-                                <segue destination="pAa-iy-mNE" kind="unwind" unwindAction="unwindToBookListWithSender:" id="eJy-tF-qdq"/>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="MZB-8s-Ngx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Guardar" id="Jw0-Vp-23G">
@@ -186,8 +149,15 @@
                         <outlet property="saveButton" destination="Jw0-Vp-23G" id="UqB-cu-Urn"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="pAa-iy-mNE" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="6zR-HY-Zef">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="OAW-KQ-TMo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2476" y="545"/>
+            <point key="canvasLocation" x="2018.4000000000001" y="137.18140929535232"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xsm-fn-BgR">
@@ -201,6 +171,7 @@
                     <connections>
                         <segue destination="L8g-sl-WVK" kind="relationship" relationship="viewControllers" id="tX9-1W-AHf"/>
                         <segue destination="Q62-CJ-eiC" kind="relationship" relationship="viewControllers" id="BgP-jC-9L9"/>
+                        <segue destination="zmV-hH-yzj" kind="relationship" relationship="viewControllers" id="mwh-67-ns9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nq5-b3-Jts" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,7 +250,6 @@
         <!--Libros-->
         <scene sceneID="v7c-Cq-WhV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z06-YO-8kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L8g-sl-WVK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Libros" image="libros" id="DuK-ne-ocm"/>
                     <toolbarItems/>
@@ -292,8 +262,54 @@
                         <segue destination="tru-c3-rzc" kind="relationship" relationship="rootViewController" id="oyv-zy-ju3"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z06-YO-8kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-706.39999999999998" y="136.28185907046478"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="nsv-UC-ncK">
+            <objects>
+                <viewController id="zmV-hH-yzj" customClass="ConfigViewController" customModule="gestorLibros" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lq3-AY-Kdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="3OH-mf-EVZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MqX-mP-EUD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6B-gl-yAh">
+                                <rect key="frame" x="144" y="102" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="borrar"/>
+                                <state key="normal" title="Borrar datos"/>
+                                <connections>
+                                    <action selector="borrar:" destination="zmV-hH-yzj" eventType="touchUpInside" id="W9M-jP-5pK"/>
+                                    <action selector="deleteAll:" destination="zmV-hH-yzj" eventType="touchUpInside" id="gNe-WL-1xv"/>
+                                    <action selector="deleteAllBooks:" destination="zmV-hH-yzj" eventType="touchUpInside" id="Qzp-C4-Jqb"/>
+                                    <action selector="hola:" destination="zmV-hH-yzj" eventType="touchUpInside" id="Nnz-ho-86h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cargar" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcy-ua-MXd">
+                                <rect key="frame" x="117" y="180" width="141" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="cargar"/>
+                                <state key="normal" title="Cargar datos prueba"/>
+                                <connections>
+                                    <action selector="realoadSampleBooks:" destination="zmV-hH-yzj" eventType="touchUpInside" id="HRx-U5-J6Z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="iUy-im-lXY"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="d6B-gl-yAh" id="IzP-IY-8g1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyO-HU-MSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-695" y="886"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Faa-0t-4hD">
@@ -311,7 +327,194 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIs-9P-z8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="-236"/>
+            <point key="canvasLocation" x="1089" y="509"/>
+        </scene>
+        <!--Libros-->
+        <scene sceneID="EaK-MP-Lo9">
+            <objects>
+                <tableViewController id="gAy-kF-g9o" customClass="BookTableViewController" customModule="gestorLibros" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="pBw-dS-ToS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookTableViewCell" rowHeight="90" id="f5I-ZH-Y2x" customClass="BookTableViewCell" customModule="gestorLibros" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f5I-ZH-Y2x" id="seE-kw-mLK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Vuo-W1-eWo">
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jS5-5a-cAL">
+                                            <rect key="frame" x="97" y="8" width="270" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uxj-s4-DOd" customClass="RatingControl" customModule="gestorLibros" customModuleProvider="target">
+                                            <rect key="frame" x="97" y="37" width="252" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </stackView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="jS5-5a-cAL" id="yna-U0-gvh"/>
+                                    <outlet property="photoImageView" destination="Vuo-W1-eWo" id="icd-M3-Mei"/>
+                                    <outlet property="ratingControl" destination="Uxj-s4-DOd" id="ftF-2j-sGw"/>
+                                    <segue destination="7G8-6y-dHt" kind="show" identifier="ShowDetail" id="eFi-lJ-N0J"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gAy-kF-g9o" id="mLU-fD-fm4"/>
+                            <outlet property="delegate" destination="gAy-kF-g9o" id="u3D-PR-kR9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Libros" id="4t9-ZB-MbC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BIP-Kz-ISh">
+                            <connections>
+                                <segue destination="0RN-Zq-PDT" kind="presentation" identifier="AddItem" id="ZKl-oU-Xh1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWh-hz-xFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.80000000000001" y="136.28185907046478"/>
+        </scene>
+        <!--Nuevo libro-->
+        <scene sceneID="rhj-Xq-ArN">
+            <objects>
+                <viewController id="7G8-6y-dHt" customClass="BookViewController" customModule="gestorLibros" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yef-ea-Qqo"/>
+                        <viewControllerLayoutGuide type="bottom" id="9RE-qo-zgC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lfq-iy-p2V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nYN-RC-Reb">
+                                <rect key="frame" x="27" y="72" width="320" height="486"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del libro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ctw-Om-8LQ">
+                                        <rect key="frame" x="96" y="0.0" width="128.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Autor del libro" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WuK-xb-I7H">
+                                        <rect key="frame" x="104" y="38" width="112" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Genero" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DqU-vE-lT7">
+                                        <rect key="frame" x="104" y="76" width="112" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DqU-vE-lT7" secondAttribute="height" multiplier="56:15" id="8dv-qk-B95"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="1Dz-AZ-Hct">
+                                        <rect key="frame" x="0.0" y="114" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="1Dz-AZ-Hct" secondAttribute="height" multiplier="1:1" id="daj-0K-ZFV"/>
+                                            <constraint firstAttribute="width" secondItem="1Dz-AZ-Hct" secondAttribute="height" multiplier="1:1" id="fiY-Zf-7I8"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VCb-qj-hOa" appends="YES" id="Gy0-5R-iyc"/>
+                                        </connections>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DsL-dt-llt" customClass="RatingControl" customModule="gestorLibros" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="442" width="252" height="44"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nue-eu-8J2">
+                                <rect key="frame" x="163" y="599" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nuevo libro" id="UMV-dS-qeh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="C7Z-G6-GHn">
+                            <connections>
+                                <action selector="cancel:" destination="7G8-6y-dHt" id="Olf-dt-Ac7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="d1Z-Ab-nTt">
+                            <connections>
+                                <segue destination="JwV-8Z-ebF" kind="unwind" unwindAction="unwindToBookListWithSender:" id="SqP-IS-XD3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="autorTextField" destination="WuK-xb-I7H" id="G16-gW-tvH"/>
+                        <outlet property="favSwitch" destination="Nue-eu-8J2" id="Gl9-Ay-Xjh"/>
+                        <outlet property="generoTextField" destination="DqU-vE-lT7" id="ZOC-ap-a8W"/>
+                        <outlet property="nameTextField" destination="Ctw-Om-8LQ" id="9t4-y0-qob"/>
+                        <outlet property="photoImageView" destination="1Dz-AZ-Hct" id="DVR-3L-Ybr"/>
+                        <outlet property="ratingControl" destination="DsL-dt-llt" id="3U6-9q-Oq5"/>
+                        <outlet property="saveButton" destination="d1Z-Ab-nTt" id="ozv-K8-K1I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jf2-Gh-PZU" sceneMemberID="firstResponder"/>
+                <exit id="JwV-8Z-ebF" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="VCb-qj-hOa">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="7G8-6y-dHt" id="hap-jY-s74"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2018.4000000000001" y="137.18140929535232"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="M9E-U7-Lml">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4AN-2M-Iq2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Qxb-9F-IhI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s8i-g1-L8S">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gAy-kF-g9o" kind="relationship" relationship="rootViewController" id="s9w-Ji-kcg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEV-jV-Eh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-706.39999999999998" y="136.28185907046478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nth-6B-o59">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0RN-Zq-PDT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6XQ-Qs-HiZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7G8-6y-dHt" kind="relationship" relationship="rootViewController" id="RxZ-1e-Xyc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FkD-OL-kmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="509"/>
         </scene>
     </scenes>
     <resources>
@@ -320,6 +523,7 @@
         <image name="libros" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eFi-lJ-N0J"/>
         <segue reference="OYG-Wr-wrS"/>
     </inferredMetricsTieBreakers>
 </document>
