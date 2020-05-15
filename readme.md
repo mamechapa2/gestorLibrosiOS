@@ -319,6 +319,6 @@ La vista quedaría como se ve en la imagen.
 ## Descarga
 
 La ultima version puede ser descargada aqui:
-https://github.com/mamechapa2/gestorLibrosiOS/releases
+https://github.com/mamechapa2/uRead/releases
 
 
