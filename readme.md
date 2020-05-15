@@ -9,8 +9,6 @@ Orestes Colomina Monsalve
 
 ## Indice
 
-## Indice
-
 - Indice
 - ¿Que es uRead?
 - ¿Como funciona la app?
@@ -53,18 +51,12 @@ A nivel de programacion, esta vista esta formada por una
 table view en la que cada libro consiste en una table view
 cell que contiene el titulo del libro, su portada y su
 puntuacion.
-```
-```
 Abajo hay una tab bar con un acceso a la vista de los
 libros favoritos del usuario y a esta misma vista.
-```
-```
 En la parte superior tenemos dos botones, uno para
 borrar los libros y el otro para añadir un nuevo libro al
 sistema. Si pinchamos en un libro accedemos a su
 visualización y si quisiéramos, modificarlo.
-```
-```
 Para eliminar un libro, vamos a ver cómo lo
 seleccionamos para borrarlo. Comprobamos si el
 editingStyle es .delete. EditingStyle es un parámetro de
@@ -325,9 +317,6 @@ La vista quedaría como se ve en la imagen.
 
 
 ## Descarga
-
-El proyecto está disponible en Github:
-https://github.com/mamechapa2/gestorLibrosiOS
 
 La ultima version puede ser descargada aqui:
 https://github.com/mamechapa2/gestorLibrosiOS/releases
