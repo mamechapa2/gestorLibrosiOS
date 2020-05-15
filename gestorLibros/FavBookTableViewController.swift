@@ -10,9 +10,12 @@ import UIKit
 //Controlador para la vista de los libros favoritos
 class FavBookTableViewController: UITableViewController {
     
+    //Estructura de datos que almacenara los libros que sean favoritos
+    
     var favBooks = [Book]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Cuando carga la vista, hay que cargar los libros favoritos
         reloadFavBooks()
 
@@ -21,7 +24,8 @@ class FavBookTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         reloadFavBooks()
     }
-    //Muestra los libros favoritos
+    
+    //Recarga los libros favoritos
     func reloadFavBooks(){
         //Primero los quitmos
         favBooks.removeAll()
