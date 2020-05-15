@@ -2,6 +2,7 @@ import UIKit
 import os.log
 import UserNotifications
 
+//Estructura de datos donde almacenaremos todos los libros que se creen
 var books = [Book]()
 class BookTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
@@ -28,6 +29,8 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
+    
+    //Funcion para enviar una notificacion con titulo y mensaje personalizado
     func enviarNotificacion(titulo: String, mensaje: String)
     {
         let notificationContent = UNMutableNotificationContent()
@@ -47,6 +50,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //pedir permiso alertas
@@ -183,6 +187,7 @@ class BookTableViewController: UITableViewController, UNUserNotificationCenterDe
     
     //MARK: Métodos privados
     
+    //Carga los libros de prueba
     private func loadSampleBooks() {
         //Construcción de los libros de prueba
         let photo1 = UIImage(named: "book1")
